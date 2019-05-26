@@ -1,0 +1,447 @@
+body{
+    background:#efefef;
+    margin: 0;
+}
+
+a{
+    text-decoration: none;
+    color: initial;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+hr{
+    height: 0;
+    border: none;
+    border-top: 1px solid #dedede;
+}
+
+ol{
+    list-style: none;
+}
+
+ul{
+    list-style: none;
+}
+
+h1,h2,h3,h4,h5,h6{
+    font-weight: normal;
+}
+
+/*[data-x].offset{
+  outline: 10px solid red;
+}*/
+
+
+
+
+.clearfix::after{
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.topNavBar{
+    padding: 20px 0 20px 0;
+    position: fixed;
+    width: 100%;/*不然会贴在一起*/
+    /*设置颜色的变化，如果不设置的话，下方sticky的颜色会被<a>中的值覆盖*/
+    color: #b7b7b7;
+    top: 0;
+    left: 0;
+    /*加载动画的时间*/
+    transition: all 0.75s;
+    /*出现的第二个问题，两边的宽度问题*/
+}
+
+
+/*黏住状态*/
+.topNavBar.sticky{
+    background: white;
+    /* 高度变低 */
+    padding: 10px 0;
+    z-index: 1;
+    /* 阴影 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    color: #3d4451;
+}
+
+.topNavBar-inner{
+    padding: 0 16px;
+}
+
+.topNavBar nav{
+    padding-top: 5px;
+}
+
+.topNavBar nav>ul{
+    margin: 0;
+    padding: 0;
+}
+
+.topNavBar nav>ul>li{
+    float: left;
+    margin-left: 17px;
+    margin-right: 17px;
+    position: relative;
+}
+
+.topNavBar nav>ul>li>a{
+    font-size: 14px;
+    color:inherit;
+    position: relative;
+    padding-top: 5px;
+    padding-bottom: 5px; 
+    display: block;/*不设置这个就不能设置高度，只能设置宽度*/
+}
+
+/*在hover后再加一个div*/
+.topNavBar nav >ul > li.active > a::after,
+.topNavBar nav >ul > li.heightlight > a::after
+{
+    /*这一句是必须的，不然这个div是显示不出内容的*/
+    /*content: '';
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #e06567;
+    height: 3px;
+    z-index: 1;
+    animation: menuSlide 0.3s;*/ 
+    content: '';
+    position: absolute;
+    display: block;
+    top: 100%;
+    width: 100%;
+    left: 0;
+    z-index: 1;
+    background: #e06567;
+    height: 3px;
+    animation: menuSlide 0.3s; 
+}
+
+@keyframes menuSlide{
+    0%{width: 0}
+    100%{width: 100%}
+}
+
+
+.topNavBar .submenu{
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 110%;
+    background: white;
+    color: #3d4451;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+
+.topNavBar li.active>.submenu{
+    display: block;
+    animation: submenuSlide .3s;
+}
+
+@keyframes submenuSlide{
+  0%{
+    margin-right: 100%;
+  }
+  100%{
+    margin-right: 0%;
+  }
+}
+
+.topNavBar .submenu>li{
+    white-space: nowrap;
+    padding: 5px 10px;
+}
+
+.topNavBar .logo{
+    font-size:24px;
+    font-family: 'Arial Black';
+    padding-top: 3px;
+    padding-bottom:4px;
+    /*我们想要居中对齐导航和logo，使用的方法是把logo和a的大小都设成40，其实我觉得直接设置行高也行*/
+}
+
+.topNavBar .logo .rs{
+    color: #e6686a;
+    margin-right: 4px;
+}
+
+.topNavBar .logo .card{
+    color: #9a9da2;
+}
+
+.banner{
+    height: 515px;
+    background-image: url(./img/rs-cover.jpg);
+    background-size: cover;
+    background-position: center center;
+}
+
+.banner .mask{
+    height: 515px;
+    background-color: rgba(0,0,0,0.8);
+}
+
+.userCard{
+    max-width: 940px;
+    background-color: #ffffff;
+    border: 1px solid red;
+    margin: 0 auto;
+}
+
+.userCard .welcome{
+    background: #e6686e;
+    color: white;
+    display: inline-block;
+    padding:4px 16px;
+    line-height: 22px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.userCard .welcome .triangle{
+    border: 10px solid transparent;
+    width: 0px;
+    border-left-color: #e6686a;
+    border-top-width: 0px;
+    position: absolute;
+    top:100%;
+    left: 4px;
+}
+
+.userCard .picture{
+    float: left;
+}
+
+.userCard .text{
+    float: left;
+    margin-left: 65px;
+    width: 470px;
+}
+
+.userCard .text h1 {
+    margin-top: 18px;
+  }
+  .userCard .text hr {
+    margin: 20px 0;
+  }
+
+  .userCard .pictureAndText{
+      padding: 50px;
+  }
+
+  .userCard dl dt,
+  .userCard dl dd
+  {
+    float: left;
+    padding: 5px 0;
+  }
+
+  .userCard dl dt{
+      width: 30%;
+      font-weight: bold;
+  }
+
+  .userCard dl dd{
+      width: 70%;
+      color: #9da0a7;
+  }
+
+  .userCard >footer.media{
+      background: #e6686a;
+      text-align: center;
+  }
+
+  .userCard >footer.media>a{
+      display: inline-block;
+      width: 40px;
+      border: 1px solid transparent;
+      border-radius: 50%;
+      line-height: 30px;
+      padding: 5px 0;
+  }
+
+  .userCard >footer.media>a:hover{
+      background: #cf5d5f;
+  }
+
+  .userCard svg{
+      width: 30px;
+      height: 30px;
+      fill: white;
+      vertical-align: top;
+  }
+
+  body>main{
+      margin-top: -340px;
+  }
+
+  body>main .downloadResume-wrapper{
+      text-align: center;
+  }
+
+  body>main .downloadResume{
+      font-size: 14px;
+      line-height: 16px;
+      padding: 21px 55px;
+      border: 1px solid #cdcfd1;
+      display: inline-block;
+      vertical-align: top;
+      border-radius: 2px;
+      background: #efefef;
+      color: #3d4451;
+      font-weight: bold;
+      margin: 32px 0;
+      transform: box-shadow 0.2s;
+  }
+
+  body>main .downloadResume:hover{
+    box-shadow: 0px 4px 13px 0px rgba(0, 0, 0, 0.2);
+  }
+
+  .selfIntroduction{
+      max-width: 940px;
+      margin: 0 auto;
+      text-align: center;
+      font-family: 'Courier New', Courier, monospace;
+      line-height: 1.8;
+      font-size: 18px;
+  }
+
+  section.skills, section.portfolio{
+    max-width: 940px;
+    margin: 0 auto;
+    margin-top: 60px;
+  }
+
+    section.skills > h2 ,
+    section.portfolio > h2 {
+        text-align: center;
+        color: #3d4451;
+        font-size: 34px;
+        line-height: 1.2;
+        font-weight: 600;
+    }
+
+    section.skills h3{
+        font-size: 14px;
+        line-height: 1.1;
+        padding-right: 40px;
+    }
+
+    section.skills >ol{
+        background: white;
+        line-height: 1.1;
+        padding-right: 40px;
+        margin-top: 30px;
+    }
+
+    section.skills >ol>li{
+        float: left;
+        width: 48%;
+        box-sizing: border-box;
+    }
+
+    section.skills >ol>li:nth-child(even){
+        float:right;
+    }
+
+
+    section.skills .progressBar{
+        height: 5px;
+        background: #fae1e1;
+        border-radius: 2px;
+        margin: 4px 0 40px;
+    }
+
+    section.skills .progressBar >.progress{
+        height: 100%;
+        background: #e6686a;
+        width: 70%;
+        border-radius: 2px;
+    }
+
+    section.portfolio{
+        text-align: center;
+        margin-bottom: 100px;
+    }
+
+     section.portfolio > nav{
+        text-align: center;
+        display: inline-block;
+        vertical-align: top;
+        margin-top: 32px;
+    }
+
+
+    section.portfolio > nav > ol{
+
+        display: inline-block;
+        vertical-align: top;
+    }
+    
+    section.portfolio > nav > ol > li{
+        float:left;
+        margin-left: 40px;
+    }
+
+    section.portfolio > nav > ol > li:nth-child(1){
+       margin-left: 0;
+    }
+
+    section.portfolio > nav .bar{
+        height: 5px;
+        background: white;
+        margin-top: 5px;
+        margin-bottom: 28px;
+        border-radius: 2px;
+    }
+
+    section.portfolio > nav .bar-inner{
+        height: 100%;
+        background: #e6686a;
+        border-radius: 2px;
+        transition: all 0.3s;
+    }
+
+    section.portfolio > nav .bar.state-1 .bar-inner{
+        margin-left: 0;
+        width: 50px;
+    }
+
+    section.portfolio > nav .bar.state-2 .bar-inner{
+        margin-left: 65px;
+        width: 50px;
+    }
+
+    section.portfolio > nav .bar.state-3 .bar-inner{
+        margin-left: 140px;
+        width: 96px;
+    }
+
+    section.portfolio .works {
+        position: relative;
+    }
+
+    section.portfolio .works >.big,
+    section.portfolio .works >.small{
+        position: absolute;
+    }
+
+
+
+
+  
+
+
+
+
+

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	window.jQuery =function(nodeOrSelector){
+		let nodes ={}
+		if (nodeOrSelector typeof 'string') {
+			let temp = document.querySelectorAll(nodeOrSelector)
+			for (var i = 0; i < temp.length; i++) {
+				nodes[i]= temp[i]
+			}
+			nodes.length = temp.length
+		}else if (nodeOrSelector instanceof Node) {
+			node = {
+				0:nodeOrSelector,
+				length:1
+			}
+		}
+
+		nodes.addClass = function(classes){
+			classes.forEach((value)=>function(){
+				for (let i = 0; i < nodes.length; i++) {
+					nodes[i].classList.add(classes)
+				}
+			})
+		}
+
+		nodes.setText = function(text){
+			var texts = []
+			if (text===undefined) {
+				for (let i = 0; i < nodes.length; i++) {
+					texts.push(nodes[i].textContent)
+				}
+				return texts
+			}else{
+				nodes[i].textContent = text
+			}
+		}
+		return nodes
+	}
+	// window.jQuery = function(nodeOrSelector){
+	// 	let nodes = {}
+	// 	if (typeof nodeOrSelector ==='string') {
+	// 		let temp = document.querySelectorAll(nodeOrSelector)
+	// 		for (let i = 0; i < temp.length; i++) {
+	// 			nodes[i] = temp[i]
+	// 		}
+	// 		nodes.length = temp.length
+	// 	}else if(nodeOrSelector instanceof Node){
+	// 		node = {
+	// 			0:nodeOrSelector,
+	// 			length:1
+	// 		}
+	// 	}
+	// 	nodes.addClass = function(classes){
+	// 		classes.forEach((value)>={
+	// 			for (let i = 0; nodes <nodes.length; i++) {
+	// 				nodes[i].classList.add(value)
+	// 			}
+	// 		})
+	// 	}
+
+	// 	nodes.setText =function(text){
+	// 		if (text===undefined) {
+	// 			var texts = []
+	// 			for (let i = 0; i < nodes.length; i++) {
+	// 				texts.push(nodes[i].textContent)
+	// 			}
+	// 			return texts
+	// 		}else{
+	// 			for (let i = 0; i < nodes.length; i++) {
+	// 				nodes[i].textContent =text
+	// 			}
+	// 		}
+	// 	}
+	// 	return nodes
+	// }
+	
+</script>
+</html>
